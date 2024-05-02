@@ -11,11 +11,11 @@ $(document).ready(function() {
         $('#soldList').empty();
 
         booksForSale.forEach(function(book) {
-            $('#saleList').append(`<div class="bookItem" id="book-${book.id}" data-id="${book.id}"><div class="item-content"><text> ${book.name} - ${book.author} </text></div><div class="item-action"> <button onclick="sellBook(${book.id})" class="sale-btn" >Vendre</button> <button onclick="deleteBook(${book.id}, 'sale')" class="delete-btn">Supprimer</button></div></div>`);
+            $('#saleList').append(`<div class="bookItem" id="book-${book.id}" data-id="${book.id}"><div class="item-content"><text> ${book.name} - ${book.author} <h2 class="price">${book.price}$</h2> </text></div><div class="item-action"> <button onclick="sellBook(${book.id})" class="sale-btn" >Vendre</button> <button onclick="deleteBook(${book.id}, 'sale')" class="delete-btn">Supprimer</button></div></div>`);
         });
 
         soldBooks.forEach(function(book) {
-            $('#soldList').append(`<div class="bookItem" id="book-${book.id}" data-id="${book.id}"><div class="item-content"><text> ${book.name} - ${book.author} </text></div><div class="item-action">  <button onclick="returnBook(${book.id})" class="sale-btn" >Retourner</button> <button onclick="deleteBook(${book.id}, 'sold')" class="delete-btn">Supprimer</button></div></div>`);
+            $('#soldList').append(`<div class="bookItem" id="book-${book.id}" data-id="${book.id}"><div class="item-content"><text> ${book.name} - ${book.author} <h2 class="price-sold">${book.price}$</h2> </text></div><div class="item-action">  <button onclick="returnBook(${book.id})" class="sale-btn" >Retourner</button> <button onclick="deleteBook(${book.id}, 'sold')" class="delete-btn">Supprimer</button></div></div>`);
         });
 
         makeDraggable();
