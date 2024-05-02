@@ -74,7 +74,7 @@ $(document).ready(function() {
         var name = $('#bookName').val();
         var author = $('#author').val();
         var price = $('#price').val();
-        var id = new Date().getTime(); // Simple unique ID generator
+        var id = new Date().getTime(); 
 
         booksForSale.push({ id: id, name: name, author: author, price: Number(price) });
         refreshLists();
@@ -82,7 +82,7 @@ $(document).ready(function() {
         $('#bookName').val('');
         $('#author').val('');
         $('#price').val('');
-        return false; // Prevent form submission
+        return false;
     };
 
     refreshLists();
