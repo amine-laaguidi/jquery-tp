@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Library App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="top" > 
+        <div class="forList">
+            <h2>Livres a vendre</h2>
+            <div id="saleList" class="bookList">
+            </div>
+        </div>
+        <div class="forList">
+            <h2>Livres vendu</h2>
+            <div id="soldList" class="bookList">
+            </div>
+        </div>
+    </div>
+
+    <form id="form" action="#" onsubmit="return addBook();">
+        <h3>Add a Book</h3>
+        <input type="text" id="bookName" placeholder="Book Name" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="number" id="price" placeholder="Price" required>
+        <button >Add Book</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
+
+
+</body>
+</html>
