@@ -1,4 +1,4 @@
-.book-list {
+/* .book-list {
     float: left;
     width: 40%;
     margin: 10px;
@@ -13,7 +13,7 @@
 
 #addBookForm input, #addBookForm button {
     margin: 5px;
-}
+} */
 body{
     padding: 0;
     margin: 0 ;
@@ -31,8 +31,6 @@ body{
 .forList{
     height: 75vh;
     width: 48vw;
-    border: solid 3px rgba(190, 190, 190,0.5);
-    border-radius: 10px 10px;
     border: solid 1px rgba(190, 190, 190,0.5);
     border-radius: 10px 10px;
     background-color: white;
@@ -48,7 +46,7 @@ body{
 }
 .bookList{
     width: 95%;
-    height: auto;
+    height: 90%;
     overflow-x: hidden;
     overflow-y:scroll;
     padding: 0px 10px;
@@ -71,7 +69,7 @@ body{
     background-color: rgba(0, 0, 0, .5);
 }
 .bookItem {
-    width: 100%;
+    width: 45vw;
     height: 100px;
     border: solid 1px rgba(190, 190, 190,0.5);
     border-radius: 10px 10px;
@@ -125,4 +123,14 @@ body{
     color: rgb(11, 189, 14);
     background-color: rgb(255, 255, 255);
     border: solid 3px rgb(11, 189, 14);
+}
+#form{
+    width: 96   vw;
+    height: 15vh;
+    border: solid 1px rgba(190, 190, 190,0.5);
+    border-radius: 10px 10px;
+    background-color: white;
+    box-shadow: 0px 0px 7px rgba(128, 128, 128,0.35);
+    margin: 0px 1.5vw;
+    padding: 10px;
 }

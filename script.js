@@ -11,12 +11,39 @@ $(document).ready(function() {
         $('#soldList').empty();
 
         booksForSale.forEach(function(book) {
-            $('#saleList').append(`<div class="bookItem"><div class="item-content"><text> ${book.name} - ${book.author} </text></div><div class="item-action"> <button onclick="sellBook(${book.id})" class="sale-btn" >Vendre  </button> <button onclick="deleteBook(${book.id}, 'sale')" class="delete-btn">Supprimer</button></div></div>`);
+            $('#saleList').append(`<div class="bookItem" id="book-${book.id}" data-id="${book.id}"><div class="item-content"><text> ${book.name} - ${book.author} </text></div><div class="item-action"> <button onclick="sellBook(${book.id})" class="sale-btn" >Vendre</button> <button onclick="deleteBook(${book.id}, 'sale')" class="delete-btn">Supprimer</button></div></div>`);
         });
 
         soldBooks.forEach(function(book) {
-            $('#soldList').append(`<div class="bookItem"><div class="item-content"><text> ${book.name} - ${book.author} </text></div><div class="item-action"> <button onclick="deleteBook(${book.id}, 'sold')" class="delete-btn">Supprimer</button></div></div>`);
-            // $('#soldList').append(`<li>${book.name} - ${book.author} <button onclick="deleteBook(${book.id}, 'sold')">Delete</button></li>`);
+            $('#soldList').append(`<div class="bookItem" id="book-${book.id}" data-id="${book.id}"><div class="item-content"><text> ${book.name} - ${book.author} </text></div><div class="item-action">  <button onclick="returnBook(${book.id})" class="sale-btn" >Retourner</button> <button onclick="deleteBook(${book.id}, 'sold')" class="delete-btn">Supprimer</button></div></div>`);
+        });
+
+        makeDraggable();
+        makeDroppable();
+    }
+
+    function makeDraggable() {
+        $('.bookItem').draggable({
+            helper: 'clone',
+            revert: 'invalid'
+        });
+    }
+
+    function makeDroppable() {
+        $('#soldList').droppable({
+            accept: '.bookItem',
+            drop: function(event, ui) {
+                var id = ui.draggable.data('id');
+                sellBook(id);
+            }
+        });
+
+        $('#saleList').droppable({
+            accept: '.bookItem',
+            drop: function(event, ui) {
+                var id = ui.draggable.data('id');
+                returnBook(id);
+            }
         });
     }
 
@@ -26,6 +53,13 @@ $(document).ready(function() {
         soldBooks.push(book);
         refreshLists();
     };
+
+            window.returnBook = function(id) {
+                var book = soldBooks.find(b => b.id === id);
+                soldBooks = soldBooks.filter(b => b.id !== id);
+                booksForSale.push(book);
+                refreshLists();
+            };
 
     window.deleteBook = function(id, type) {
         if (type === 'sale') {
@@ -48,6 +82,7 @@ $(document).ready(function() {
         $('#bookName').val('');
         $('#author').val('');
         $('#price').val('');
+        return false; // Prevent form submission
     };
 
     refreshLists();
